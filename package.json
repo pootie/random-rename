@@ -1,0 +1,11 @@
+{
+  "name": "random-rename",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js ~/src/random-rename/files"
+  },
+  "author": "",
+  "license": "ISC"
+}
