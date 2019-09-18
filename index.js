@@ -22,7 +22,11 @@ if (_args.length > 0) {
       orig = `${path}/${orig}`;
       let updated = `${path}/${num} - ${stripped}`;
       console.log(`${orig} -> ${updated}`);
-      fs.renameSync(orig, updated);
+      try {
+        fs.renameSync(orig, updated);
+      } catch (err2) {
+        console.error(err2);
+      }
     }
   });
 } else {
