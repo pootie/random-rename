@@ -4,26 +4,26 @@ var _args = process.argv.slice(2);
 if (_args.length > 0) {
   let path = _args[0];
   fs.readdir(path, function(err, items) {
-      if (err) {
-        console.error(err);
-        return;
-      }
+    if (err) {
+      console.error(err);
+      return;
+    }
 
-      shuffle(items);
+    shuffle(items);
 
-      // rename
-      for (var i=0; i<items.length; i++) {
-        let orig = items[i];
-        let stripped = orig;
-        if (orig.indexOf(' - ') > -1) {
-          stripped = orig.substring(orig.indexOf(' - ') + 3);
-        }
-        let num = new String(i).padStart(4, '0');
-        orig = `${path}/${orig}`;
-        let updated = `${path}/${num} - ${stripped}`;
-        console.log(`${orig} -> ${updated}`);
-        fs.renameSync(orig, updated);
+    // rename
+    for (var i=0; i<items.length; i++) {
+      let orig = items[i];
+      let stripped = orig;
+      if (orig.indexOf(' - ') > -1) {
+        stripped = orig.substring(orig.indexOf(' - ') + 3);
       }
+      let num = new String(i).padStart(4, '0');
+      orig = `${path}/${orig}`;
+      let updated = `${path}/${num} - ${stripped}`;
+      console.log(`${orig} -> ${updated}`);
+      fs.renameSync(orig, updated);
+    }
   });
 } else {
   console.log('usage: node index.js "path\to\files"')
