@@ -14,6 +14,9 @@ if (_args.length > 0) {
     // rename
     for (var i=0; i<items.length; i++) {
       let orig = items[i];
+      if (fs.lstatSync(`${path}/${orig}`).isDirectory())
+        continue;
+
       let stripped = orig;
       if (orig.indexOf(' - ') > -1) {
         stripped = orig.substring(orig.indexOf(' - ') + 3);
